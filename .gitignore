@@ -3,6 +3,7 @@ nbproject
 .idea
 .project
 .settings
+app/node_modules
 
 
 

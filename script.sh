@@ -14,9 +14,7 @@ export DEV_GID=$(id -g)
 
 app_start()
 {
-    export ProjectName=$(cat projectname)
-    docker-compose -f docker-compose.yml down &&
-    docker-compose -f docker-compose.yml up
+    app_console npm run start
 }
 
 
@@ -40,7 +38,7 @@ app_install()
 
 app_console()
 {
-    docker run -it --rm -v "$PWD"/app:/usr/src/app -w /usr/src/app --user $(id -u):$(id -g) jguillermo/docker-angular-cli:latest "$@"
+    docker run -it --rm -p 9000:9000 -v "$PWD"/app:/usr/src/app -w /usr/src/app --user $(id -u):$(id -g) jguillermo/docker-angular-cli:latest "$@"
 }
 
 app_docker_images_build()
