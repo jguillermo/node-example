@@ -1,0 +1,8 @@
+version: '2'
+services:
+  node:
+    image: jguillermo/docker-angular-cli:latest
+    volumes:
+      - ./app:/usr/src/app
+      - ~/nodecache:/nodecache
+    working_dir: /usr/src/app
