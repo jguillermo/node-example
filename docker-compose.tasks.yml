@@ -1,7 +1,7 @@
 version: '2'
 services:
   node:
-    image: jguillermo/docker-angular-cli:latest
+    image: jguillermo/docker-node
     volumes:
       - ./app:/usr/src/app
       - ~/nodecache:/nodecache

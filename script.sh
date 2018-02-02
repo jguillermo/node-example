@@ -9,36 +9,34 @@ ER='\u274c'
 
 alias cls='printf "\033c"'
 
+DOCKER_IMAGE="jguillermo/docker-node:9"
+
+APP_PATH=app
+
 export DEV_UID=$(id -u)
 export DEV_GID=$(id -g)
 
 app_start()
 {
-    app_console npm run start
+    app_console_port npm run start
 }
 
 
 app_install()
 {
-    echo -n "Project name ($ProjectName)? "
-    read answer
-    if [ $answer ]; then
-      ProjectName="$answer"
-    fi
-
     mkdir ~/nodecache && chmod 777 ~/nodecache
-
-    echo "$ProjectName" > projectname
-    echo "$ProjectName"/node_modules >> .gitignore
-
-    mkdir $ProjectName && docker-compose -f docker-compose.tasks.yml run --rm --user $(id -u):$(id -g) node ng new $ProjectName
-
+    app_console npm install
 }
-
 
 app_console()
 {
-    docker run -it --rm -p 9000:9000 -v "$PWD"/app:/usr/src/app -w /usr/src/app --user $(id -u):$(id -g) jguillermo/docker-angular-cli:latest "$@"
+   docker run -it --rm -v "$PWD"/$APP_PATH:/usr/src/app -w /usr/src/app --user $(id -u):$(id -g) $DOCKER_IMAGE "$@"
+}
+
+app_console_port()
+{
+   docker run -it --rm -p 9000:9000 -v "$PWD"/$APP_PATH:/usr/src/app -w /usr/src/app --user $(id -u):$(id -g) $DOCKER_IMAGE "$@"
+
 }
 
 app_docker_images_build()

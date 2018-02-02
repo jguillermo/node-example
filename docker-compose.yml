@@ -4,7 +4,6 @@ services:
     extends:
       file: docker-compose.tasks.yml
       service: node
-    command: ng serve --host 0.0.0.0
+    command: npm run start
     ports:
-      - 4200:4200
-    working_dir: /usr/src/${ProjectName}
+      - 9000:9000

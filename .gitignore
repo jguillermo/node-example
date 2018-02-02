@@ -1,9 +1,11 @@
 nbproject
 .DS_Store
 .idea
+.vscode
 .project
 .settings
 app/node_modules
+*/node_modules
 
 
 
