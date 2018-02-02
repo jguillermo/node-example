@@ -20,11 +20,14 @@
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.3",
     "@types/dotenv": "^4.0.2",
     "@types/morgan": "^1.7.32",
     "concurrently": "^3.5.1",

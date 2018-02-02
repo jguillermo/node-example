@@ -6,6 +6,6 @@ nbproject
 .settings
 app/node_modules
 */node_modules
-
+app/dist
 
 

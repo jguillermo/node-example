@@ -1,15 +1,31 @@
 import * as express from 'express'
-import * as logger from 'morgan'
 
-const app = express();
+import * as config from './config'
+import * as router from './router'
 
-app.disable('X-Powered-By');
-app.use(logger("combined"));
+let _server;
 
-app.get('/',(req,res)=>{
-    res.end('hola mundo');
-});
+// console.log(config.default);
 
-app.listen('9000',()=>{
-    console.log('servidor en el 9000');
-});
+const server = {
+    start(){
+        const app = express()
+
+        config.default(app)
+        router.default(app)
+
+
+        _server = app.listen('9000',()=>{
+            console.log('servidor en el 9000')
+        })
+    },
+    close(){
+        _server.close()
+    }
+};
+
+export default server
+
+if(!module.parent){
+    server.start();
+}
