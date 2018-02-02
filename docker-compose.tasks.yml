@@ -1,8 +1,8 @@
 version: '2'
 services:
   node:
-    image: jguillermo/docker-node
+    image: jguillermo/docker-node:9
     volumes:
-      - ./app:/usr/src/app
+      - ./app:/usr/src
       - ~/nodecache:/nodecache
     working_dir: /usr/src/app
