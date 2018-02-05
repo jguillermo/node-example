@@ -1,31 +1,30 @@
-import * as express from 'express'
+import * as express from "express";
 
-import * as config from './config'
-import * as router from './router'
+import * as config from "./config";
+import * as router from "./router";
 
-let _server;
+let _server: any;
 
 // console.log(config.default);
 
 const server = {
-    start(){
-        const app = express()
+    start() {
+        const app = express();
 
-        config.default(app)
-        router.default(app)
+        config.default(app);
+        router.default(app);
 
-
-        _server = app.listen('9000',()=>{
-            console.log('servidor en el 9000')
-        })
+        _server = app.listen("9000", () => {
+            console.log("Servidor en el 9000");
+        });
     },
-    close(){
-        _server.close()
+    close() {
+        _server.close();
     }
 };
 
-export default server
+export default server;
 
-if(!module.parent){
+if (!module.parent) {
     server.start();
 }
